@@ -1,2 +1,16 @@
+**/bin/
+**/obj/
+.vs/
+front/node_modules/*
+front/.angular/*
+node_modules/**
 node_modules/*
+.angular/**
 .angular/*
+front/node_modules/**
+front/.angular/**
+front/node_modules/
+front/.angular/
+front/.angular/cache/13.3.5/**
+front/.angular/cache/13.3.5/*
+front/.angular/cache/13.3.5/
