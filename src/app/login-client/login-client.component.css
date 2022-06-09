@@ -1,0 +1,79 @@
+.form {
+    grid-area: form;
+}
+
+.logo {  
+    justify-content: center;
+    grid-area: logo;
+    display: flex;
+}
+
+.logo img {
+    padding: 1em;
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 4em;
+}
+
+.login-button{
+    grid-area: login;
+    align-self: center;
+    justify-self: center;
+}
+
+.card {
+    border-top: .4em solid var(--Cor3);
+    margin: auto auto;
+    margin-top: 2em;
+    grid-gap: 1em;
+    padding: 0em 1em;
+    display: grid;
+    width: 40em;
+    height: 45em;
+    background-color: var(--Cor1);
+    border-radius: 1em;
+    box-shadow: 0.09rem 0.1rem 0.9rem -0.09rem var(--Cor2);
+   
+    grid-template-columns: auto;
+    grid-template-rows: 50% 25%;
+    grid-template-areas:
+        "logo"
+        "form"
+        "login";
+}
+
+.form{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
+}
+
+.form div{
+    display:  flex;
+    justify-content: space-between;
+    gap: 1.5em;
+    align-content: center;
+    width: 90%;
+    
+}
+
+.form input{
+    display: flex;
+    justify-content: end;
+    width: 30em;
+    border: .1em solid var(--Cor3);
+    border-radius: .5em;
+
+    margin-top: .7em;
+    
+}
+
+.form-label{
+    justify-content: start;
+    align-self: center;
+    display: flex;
+}
+
+

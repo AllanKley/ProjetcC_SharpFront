@@ -1,0 +1,72 @@
+.item-a {
+  grid-area: ProductName;
+  font-size: large;
+  font-size: 2.5em;
+  align-self: center;
+}
+
+.item-b {
+  grid-area: ProductDecription;
+  
+  font-size: 1.5em;
+}
+.item-c {
+  grid-area: ProductPrice;
+  font-size: 3em;
+
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+
+  text-align: center;
+}
+
+.item-c img{
+  width: 1em;
+  height: 1em;
+}
+
+.item-c img:hover{
+  transform:scale(1.15);
+  transition: ease-in-out .3s;
+}
+
+.item-c p{
+  align-self: center;
+  text-align: center;
+  
+}
+.item-d {
+  grid-area: PurchaseButton;
+  justify-self: center;
+  align-self: center;
+}
+.item-e {
+  margin: auto auto;
+  grid-area: ProductPicture;
+}
+
+.item-e img{
+  max-width: 100%;
+      max-height: 100%;
+      display: block; /* remove extra space below image */
+}
+
+.container {
+  
+  grid-gap: 2em;
+  margin: auto auto;
+  margin-top: 3em;
+  max-width: 70%;
+  height: 45em;
+  display: grid;
+  grid-template-columns: 30%;
+  grid-template-rows: 15% 50%;
+  grid-template-areas: 
+      "ProductPicture ProductName "
+      "ProductPicture ProductDecription"
+      "ProductPrice PurchaseButton";
+}
+

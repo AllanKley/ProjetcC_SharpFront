@@ -1,0 +1,151 @@
+:root{
+  --Cor1: #EFF1FA;
+  --Cor2: #373F47;
+  --Cor3: #F39237;
+  --Cor4: #89937C;
+  --Cor5: #f5f5f5;
+
+}
+
+
+/* You can add global styles to this file, and also import other style files */
+* {
+  font-family: 'Open Sans', sans-serif;
+  color: var(--Cor2);
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+}
+
+p{
+  margin-block-end: 0;
+  margin-block-start: 0;
+}
+body{
+  margin: 0;
+  background-color: var(--Cor1);
+}
+.container {
+  display: flex;
+  flex-direction:column;
+}
+
+router-outlet + *  {
+  padding: 0 16px;
+}
+
+
+/* Hyperlink */
+
+a {
+  cursor: pointer;
+  color: var(--Cor2);
+  text-decoration: none;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+/* Input */
+
+input {
+  font-size: 14px;
+  border-radius: 2px;
+  padding: 8px;
+  margin-bottom: 16px;
+  border: 1px solid #BDBDBD;
+}
+
+label {
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 4px;
+  display: block;
+  text-transform: uppercase;
+}
+
+.button-5 {
+
+  background-color: var(--Cor3);
+  border: 1px solid transparent;
+  border-radius: .5em;
+  color: var(--Cor1);
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 1.5em;
+  padding: 0.8em 2em;
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+  }
+
+
+  .button-5:hover,
+  .button-5:focus {
+  background-color: #fb8332;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  }
+
+  .button-5:hover {
+  transform: translateY(-1px);
+  }
+
+  .button-5:active {
+  background-color: #c85000;
+  box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
+  transform: translateY(0);
+  }
+
+  .alert{
+    color: lightcoral;
+  }
+
+  .invisible{
+    display: none;
+  }
+
+/* Button
+.button, button {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 16px;
+  border-radius: 2px;
+  font-size: 14px;
+  cursor: pointer;
+  background-color: #1976d2;
+  color: white;
+  border: none;
+}
+
+.button:hover, button:hover {
+  opacity: 0.8;
+  font-weight: normal;
+}
+
+.button:disabled, button:disabled {
+  opacity: 0.5;
+  cursor: auto;
+}
+*/
+
+
+/* Fancy Button
+
+.fancy-button {
+  background-color: white;
+  color: #1976d2;
+}
+
+.fancy-button i.material-icons {
+  color: #1976d2;
+  padding-right: 4px;
+}
+
+*/

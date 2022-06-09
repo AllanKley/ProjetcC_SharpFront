@@ -1,0 +1,31 @@
+<div class="productsList" *ngIf="products">
+  <div class="productComponent" *ngFor="let product of products" >
+
+    <div class="item-d" >
+      <img src={{product.image}}>
+    </div>
+
+    <div class="item-a">
+          <a [title]="product.name"
+          [routerLink]="['/product',product.id]">
+              {{product.name}}
+          </a>
+    </div>
+
+    <div class = "item-c">
+      <p>$ {{product.unit_price}}</p>
+      <a href="" id="Like"><img src="https://pngroyale.com/wp-content/uploads/2021/11/Download-emoji-heart-.png" alt=""></a>
+      
+    </div>
+
+    <div class = "item-b">
+      <p>{{product.description}}</p>
+    </div>
+
+
+  </div>
+</div>
+
+
+
+
