@@ -1,7 +1,6 @@
-import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../products';
 import axios from 'axios';
+import { Product } from '../products';
 
 @Component({
   selector: 'app-wish-list',
@@ -39,6 +38,12 @@ export class WishListComponent implements OnInit {
       console.log(error);
     });
   }
+
+
+
+
+
+
 
   RemoveWishList(WishListId:number){
 
