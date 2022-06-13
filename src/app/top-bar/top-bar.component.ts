@@ -15,12 +15,8 @@ export class TopBarComponent implements OnInit {
 
   profile(){
     var instance = this;
-
-    if(localStorage.getItem('clientId') == null){
-      instance.router.navigate(['client/login']);
-    }else{
-      instance.router.navigate(['client/profile/', localStorage.getItem('clientId')]);
-    }
+      instance.router.navigate(['client/profile']);
+    
   }
 }
 

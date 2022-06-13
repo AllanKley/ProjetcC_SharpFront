@@ -39,7 +39,7 @@ import { PurchaseClientComponent } from './purchase-client/purchase-client.compo
       {path: 'client/register', component : ClientRegisterComponent},
       {path: 'client/login', component : LoginClientComponent},
       {path: "wishlist", component:WishListComponent},
-      {path: 'client/profile/:clientID', component : ProfileClientComponent},
+      {path: 'client/profile', component : ProfileClientComponent},
       {path: 'client/purchase', component : PurchaseClientComponent}
     ])
   ],

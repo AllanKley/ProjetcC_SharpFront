@@ -25,16 +25,20 @@ export class ProfileClientComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    const clientId = Number(localStorage.getItem('clientId'));
-    this.getClient(clientId);
+    this.getClient();
   }
 
-  async getClient(id:number){
-   
+  async getClient(){
+    var data = JSON.stringify({});
+
     var config = {
       method: 'get',
-      url: 'http://localhost:5236/client/get/' + id,
-      headers: { }
+      url: 'http://localhost:5236/client/get',
+      headers: { 
+        'Authorization': 'Bearer ' + localStorage.getItem("authToken"),
+        'Content-Type': 'application/json'
+      },
+      data : data
     };
 
     var response = await axios(config);
