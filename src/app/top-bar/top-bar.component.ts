@@ -15,7 +15,12 @@ export class TopBarComponent implements OnInit {
 
   profile(){
     var instance = this;
+    if(localStorage.getItem('authToken') != null){
       instance.router.navigate(['client/profile']);
+    }else{
+      instance.router.navigate(['client/login'])
+    }
+      
     
   }
 }
