@@ -54,4 +54,8 @@ export class LoginClientComponent implements OnInit {
     //   this.router.navigate(['/']);
     // }
   }
+
+  Cadatro(){
+    this.router.navigate(["/client/register"]);
+  }
 }

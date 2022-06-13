@@ -14,8 +14,8 @@
 
     <div class = "item-c">
       <p>$ {{product.unit_price}}</p>
-      <a href="" id="Like"><img src="../../assets/Icons/heart.svg" alt="" style="filter: invert(8%) sepia(89%) saturate(7466%) hue-rotate(11deg) brightness(97%) contrast(114%);"></a>
-      
+      <img src="../../assets/Icons/heart.svg" alt="" style="filter: invert(8%) sepia(89%) saturate(7466%) hue-rotate(11deg) brightness(97%) contrast(114%);" (click)="AddProductToWishList(product.idStocks)">
+
     </div>
 
     <div class = "item-b">
