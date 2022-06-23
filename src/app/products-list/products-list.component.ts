@@ -32,28 +32,4 @@ export class ProductsListComponent implements OnInit {
       })
       .catch(function (error: any) {});
   }
-
-  AddProductToWishList(IdStocks: Number) {
-    var data = JSON.stringify({
-      id: IdStocks,
-    });
-
-    var config = {
-      method: 'post',
-      url: 'http://localhost:5236/wishList/register',
-      headers: {
-        Authorization:'Bearer '+ localStorage.getItem("authToken"),
-        'Content-Type': 'application/json',
-      },
-      data: data,
-    };
-
-    axios(config)
-      .then(function (response) {
-        console.log(JSON.stringify(response.data));
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
 }

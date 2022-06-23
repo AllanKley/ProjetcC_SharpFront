@@ -19,6 +19,9 @@
     grid-area: login;
     align-self: center;
     justify-self: center;
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
 }
 
 .card {

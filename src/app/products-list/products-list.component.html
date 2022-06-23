@@ -1,31 +1,15 @@
 <div class="productsList" *ngIf="products">
-  <div class="productComponent" *ngFor="let product of products" >
-
-    <div class="item-d" >
-      <img src={{product.image}}>
-    </div>
-
-    <div class="item-a">
-          <a [title]="product.name"
-          [routerLink]="['/product/', product.id]">
-              {{product.name}}
-          </a>
-    </div>
-
-    <div class = "item-c">
-      <p>$ {{product.unit_price}}</p>
-      <img src="../../assets/Icons/heart.svg" alt="" style="filter: invert(8%) sepia(89%) saturate(7466%) hue-rotate(11deg) brightness(97%) contrast(114%);" (click)="AddProductToWishList(product.idStocks)">
-
-    </div>
-
-    <div class = "item-b">
-      <p>{{product.description}}</p>
-    </div>
-
+  <div *ngFor="let product of products">
+    
+    <app-card 
+      productId = "{{product.id}}"
+      productPicture="{{product.image}}" 
+      productTitle="{{product.name}}" 
+      productDescription="{{product.description}}" 
+      productPrice="{{product.unit_price}}"
+      idStocks = "{{product.idStocks}}"
+      idWishlist = "{{product.idWishlist}}">
+    </app-card>
 
   </div>
 </div>
-
-
-
-

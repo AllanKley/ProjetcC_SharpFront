@@ -1,29 +1,15 @@
 <div class="productsList" *ngIf="products">
-  <div class="productComponent" *ngFor="let product of products" >
+  <div *ngFor="let product of products" >
 
-    <div class="item-d" >
-      <img src={{product.image}}>
-    </div>
-
-    <div class="item-a">
-          <a [title]="product.name"
-          [routerLink]="['/product',product.id]">
-              {{product.name}}
-          </a>
-    </div>
-
-    <div class = "item-c">
-      <p>$ {{product.unit_price}}</p>
-      <a id="Like" (click)="RemoveWishList(product.idWishlist)"><img src="https://cdn-icons-png.flaticon.com/512/2107/2107845.png" alt=""></a>
-      <!-- https://cdn-icons-png.flaticon.com/512/2107/2107845.png  favorited -->
-      <!-- https://cdn-icons-png.flaticon.com/512/1000/1000621.png -->
-
-    </div>
-
-    <div class = "item-b">
-      <p>{{product.description}}</p>
-    </div>
-
+    <app-card 
+      productId = "{{product.id}}"
+      productPicture="{{product.image}}" 
+      productTitle="{{product.name}}" 
+      productDescription="{{product.description}}" 
+      productPrice="{{product.unit_price}}"
+      idStocks = "{{product.idStocks}}"
+      idWishlist = "{{product.idWishlist}}">
+    </app-card>
 
   </div>
 </div>

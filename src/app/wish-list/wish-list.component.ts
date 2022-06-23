@@ -28,6 +28,8 @@ export class WishListComponent implements OnInit {
       },
       data : data
     };
+
+    
     let instance = this
     axios(config)
     .then(function (response) {

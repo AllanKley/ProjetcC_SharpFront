@@ -1,0 +1,15 @@
+<div class="container">
+    <img src="{{productPicture}}" alt="">
+
+    <a title="{{productTitle}}" 
+    [routerLink]="['/product/' + productId]">
+        <h1>{{productTitle}}</h1>
+    </a>
+
+    <p>{{productDescription}}</p>
+
+    <div class="price">
+        <h1>{{productPrice | currency}}</h1>
+        <img src="../../assets/Icons/heart.svg" alt="" (click)="AddProductToWishList()">
+    </div>
+</div>
