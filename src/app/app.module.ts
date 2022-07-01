@@ -15,6 +15,7 @@ import { WishListComponent } from './wish-list/wish-list.component';
 import { ProfileClientComponent } from './profile-client/profile-client.component';
 import { PurchaseClientComponent } from './purchase-client/purchase-client.component';
 import { CardComponent } from './card/card.component';
+import { OwnerLoginComponent } from './owner-login/owner-login.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { CardComponent } from './card/card.component';
     WishListComponent,
     ProfileClientComponent,
     PurchaseClientComponent,
-    CardComponent
+    CardComponent,
+    OwnerLoginComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +44,8 @@ import { CardComponent } from './card/card.component';
       {path: 'client/login', component : LoginClientComponent},
       {path: "wishlist", component:WishListComponent},
       {path: 'client/profile', component : ProfileClientComponent},
-      {path: 'client/purchase', component : PurchaseClientComponent}
+      {path: 'client/purchase', component : PurchaseClientComponent},
+      {path: 'owner/login', component:OwnerLoginComponent}
     ])
   ],
   providers: [],
