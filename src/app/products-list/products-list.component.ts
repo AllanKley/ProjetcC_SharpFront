@@ -10,7 +10,9 @@ import axios from 'axios';
   styleUrls: ['./products-list.component.css'],
 })
 export class ProductsListComponent implements OnInit {
+
   products: [Product] | undefined;
+
   constructor() {
     this.getAllProducts();
   }
@@ -31,5 +33,29 @@ export class ProductsListComponent implements OnInit {
         console.log(response.data.name);
       })
       .catch(function (error: any) {});
+  }
+
+  AddProductToWishList(idStocks: number) {
+    var data = JSON.stringify({
+      id: idStocks,
+    });
+
+    var config = {
+      method: 'post',
+      url: 'http://localhost:5236/wishList/register',
+      headers: {
+        Authorization:'Bearer '+ localStorage.getItem("authToken"),
+        'Content-Type': 'application/json',
+      },
+      data: data,
+    };
+
+    axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 }

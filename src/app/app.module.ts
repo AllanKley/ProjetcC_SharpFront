@@ -14,9 +14,9 @@ import { CommonModule } from '@angular/common';
 import { WishListComponent } from './wish-list/wish-list.component';
 import { ProfileClientComponent } from './profile-client/profile-client.component';
 import { PurchaseClientComponent } from './purchase-client/purchase-client.component';
-import { CardComponent } from './card/card.component';
 import { OwnerLoginComponent } from './owner-login/owner-login.component';
 import { OwnerRegisterComponent } from './owner-register/owner-register.component';
+
 
 @NgModule({
   declarations: [
@@ -29,9 +29,9 @@ import { OwnerRegisterComponent } from './owner-register/owner-register.componen
     WishListComponent,
     ProfileClientComponent,
     PurchaseClientComponent,
-    CardComponent,
     OwnerLoginComponent,
     OwnerRegisterComponent
+
   ],
   imports: [
     BrowserModule,
