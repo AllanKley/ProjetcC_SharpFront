@@ -1,26 +1,22 @@
 <div class="productsList" *ngIf="purchases">
     <div class="productComponent" *ngFor="let purchase of purchases" >
-        
-      <div class="item-d" >
-        <img src={{purchase.product.image}}>
-      </div>
-  
-      <div class="item-a">
-            <a [title]="purchase.product.number_nf"
-            [routerLink]="['/product',purchase.product.id]">
-                {{purchase.product.name}}
-            </a>
-      </div>
-  
-      <div class = "item-c">
-        <p>$ {{purchase.purchase_values}}</p>
-        <a id="Like"><img src="https://cdn-icons-png.flaticon.com/512/2107/2107845.png" alt=""></a>
-      </div>
-  
-      <div class = "item-b">
+
+      <div class="container">
+        <img src="{{purchase.product.image}}" alt="">
+    
+        <a title="{{purchase.product.name}}" 
+        [routerLink]="['/product/' + purchase.product.id]">
+            <h1>{{purchase.product.name}}</h1>
+        </a>
+    
         <p>{{purchase.product.description}}</p>
-      </div>
-  
+    
+        <div class="price">
+            <h1>{{purchase.purchase_values | currency}}</h1>
+        </div>
+
+
+    </div>
   
     </div>
   </div>

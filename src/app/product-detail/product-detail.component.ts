@@ -32,19 +32,42 @@ export class ProductDetailComponent implements OnInit {
       headers: {}
     };
     var instance = this;
+    
     axios(config)
       .then(function (response: any) {
-        instance.product = response.data.product;
-        instance.store = response.data.store;
+        instance.product = response.data;
         if (instance.product != undefined)
           instance.product.unit_price = response.data.unit_price;
+          console.log(response.data);
       })
       .catch(function (error: any) {
         console.log(error);
       });
   }
 
+  AddProductToWishList(idStocks: number) {
+    var data = JSON.stringify({
+      id: idStocks,
+    });
 
+    var config = {
+      method: 'post',
+      url: 'http://localhost:5236/wishList/register',
+      headers: {
+        Authorization:'Bearer '+ localStorage.getItem("authToken"),
+        'Content-Type': 'application/json',
+      },
+      data: data,
+    };
+
+    axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
 
   makePurchase() {
     var instance = this;

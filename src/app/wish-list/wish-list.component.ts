@@ -47,15 +47,16 @@ export class WishListComponent implements OnInit {
 
 
 
-  RemoveWishList(WishListId:number){
+  RemoveWishList(idWishlist:number){
 
     var config = {
       method: 'delete',
-      url: 'http://localhost:5236/wishlist/deletewishlist/' + WishListId,
+      url: 'http://localhost:5236/wishlist/deletewishlist/' + idWishlist,
       headers: {
         'Authorization': 'Bearer ' +  localStorage.getItem("authToken"),
       }
     };
+    console.log("teste");
     let instance = this;
     axios(config)
     .then(function (response: any) {

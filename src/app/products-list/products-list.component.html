@@ -1,15 +1,21 @@
 <div class="productsList" *ngIf="products">
   <div *ngFor="let product of products">
     
-    <app-card 
-      productId = "{{product.id}}"
-      productPicture="{{product.image}}" 
-      productTitle="{{product.name}}" 
-      productDescription="{{product.description}}" 
-      productPrice="{{product.unit_price}}"
-      idStocks = "{{product.idStocks}}"
-      idWishlist = "{{product.idWishlist}}">
-    </app-card>
+    <div class="container">
+      <img src="{{product.image}}" alt="">
+  
+      <a title="{{product.name}}" 
+      [routerLink]="['/product/' + product.id]">
+          <h1>{{product.name}}</h1>
+      </a>
+  
+      <p>{{product.description}}</p>
+  
+      <div class="price">
+          <h1>{{product.unit_price | currency}}</h1>
+          <img src="../../assets/Icons/heart.svg" alt="" (click)="AddProductToWishList(product.idStocks)">
+      </div>
+  </div>
 
   </div>
 </div>
