@@ -1,22 +1,22 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, NgModel } from '@angular/forms';
-//import { Client } from '../client';
-import { Client } from '../client';
-import axios from 'axios';
 import { Router } from '@angular/router';
+//import { Client } from '../client';
+import axios from 'axios';
 
 @Component({
-  selector: 'app-client-register',
-  templateUrl: './client-register.component.html',
-  styleUrls: ['./client-register.component.css'],
+  selector: 'app-owner-register',
+  templateUrl: './owner-register.component.html',
+  styleUrls: ['./owner-register.component.css']
 })
-export class ClientRegisterComponent implements OnInit {
+export class OwnerRegisterComponent implements OnInit {
   constructor(private router: Router) { }
+
   EmailError: string | undefined;
   DocumentError: string | undefined;
   LoginError: string | undefined;
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   VerifyForm() {
     let nameInput = this.getInputField('#name');
@@ -65,7 +65,7 @@ export class ClientRegisterComponent implements OnInit {
     let pais = this.getInputField('#pais');
     let estado = this.getInputField('#estado')
     let endereco = this.getInputField('#endereco')
-    let cep =  this.getInputField('#cep')
+    let cep = this.getInputField('#cep')
     let cidade = this.getInputField('#cidade')
 
     if (result == true) {
@@ -81,22 +81,24 @@ export class ClientRegisterComponent implements OnInit {
           city: cidade.value,
           state: estado.value,
           country: pais.value,
-          postal_code:cep.value ,
+          postal_code: cep.value,
         },
         passwd: passwordInput.value,
       });
       let instance = this;
       var config = {
         method: 'post',
-        url: 'http://localhost:5236/client/register',
+        url: 'http://localhost:5236/owner/register',
         headers: {
           'Content-Type': 'application/json',
         },
         data: data,
       };
+      
       axios(config)
         .then(function (response) {
-
+          
+          instance.RegisterStore(response.data)
         })
         .catch(function (error) {
           let errors = error.response.data;
@@ -111,11 +113,39 @@ export class ClientRegisterComponent implements OnInit {
             instance.LoginError = errors.login;
           }
         });
-
-
-      
-      
     }
+  }
+
+  RegisterStore(IdOwner:number){
+    let nome = this.getInputField("#razao");
+    let cnpj = this.getInputField("#cnpj")
+    var data = JSON.stringify({
+      "name": nome.value,
+      "cnpj": cnpj.value,
+      "owner": {
+        "document": IdOwner
+      }
+    });
+    
+    var config = {
+      method: 'post',
+      url: 'http://localhost:5236/store/register',
+      headers: { 
+        'Content-Type': 'application/json'
+      },
+      data : data
+    };
+    
+    axios(config)
+    .then(function (response) {
+      console.log(JSON.stringify(response.data));
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+  Cancel(){
+    this.router.navigate(["owner/login"])
   }
 
   activeVisibleSpan(id: string) {
@@ -218,10 +248,6 @@ export class ClientRegisterComponent implements OnInit {
     phoneField.value = phoneValue;
   }
 
-  Cancel(){
-    this.router.navigate(["client/login"])
-  }
-
   ViaCEPAPI() {
     let input = this.getInputField('#cep');
 
@@ -231,7 +257,7 @@ export class ClientRegisterComponent implements OnInit {
 
       var config = {
         method: 'get',
-        url: 'viacep.com.br/ws/' + cep +  '/json/',
+        url: 'viacep.com.br/ws/' + cep + '/json/',
         headers: {},
       };
 
@@ -245,3 +271,5 @@ export class ClientRegisterComponent implements OnInit {
     }
   }
 }
+
+
