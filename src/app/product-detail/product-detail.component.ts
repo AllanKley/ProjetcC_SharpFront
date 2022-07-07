@@ -13,9 +13,11 @@ export class ProductDetailComponent implements OnInit {
 
   product: Product| undefined;
   store:{};
+  client:{};
 
   constructor(private route: ActivatedRoute) {
     this.store = {}
+    this.client = {}
   }
 
   ngOnInit(): void {
@@ -36,9 +38,13 @@ export class ProductDetailComponent implements OnInit {
     axios(config)
       .then(function (response: any) {
         instance.product = response.data;
-        if (instance.product != undefined)
+
+        if (instance.product != undefined){
           instance.product.unit_price = response.data.unit_price;
-          console.log(response.data);
+          if(instance.product.storeCNPJ != undefined){
+            instance.getStore(instance.product.storeCNPJ);
+          }
+        }
       })
       .catch(function (error: any) {
         console.log(error);
@@ -72,19 +78,21 @@ export class ProductDetailComponent implements OnInit {
   makePurchase() {
     var instance = this;
     let date_purchase = Date.now();
-    //await this.getStore(cnpj);
+
 
     var data = JSON.stringify({
       "date_purchase": date_purchase,
       "payment_type": 2,
       "purchase_status": 1,
-      "purchase_values": this.product?.unit_price,
+      "purchase_value": this.product?.unit_price,
       "number_confirmation": Math.random().toString(36).slice(2),
       "number_nf": Math.random().toString(36).slice(2),
       "store": this.store,
-      "product": this.product
+      "productsDTO": [this.product]
     });
     var token = localStorage.getItem("authToken");
+
+    console.log(data);
 
     var config = {
       method: 'post',
@@ -98,9 +106,26 @@ export class ProductDetailComponent implements OnInit {
 
     axios(config)
       .then(function (response: any) {
-        instance.product = response.data.product;
-        if (instance.product != undefined)
-          instance.product.unit_price = response.data.unit_price;
+       
+      })
+      .catch(function (error: any) {
+        console.log(error);
+      });
+  }
+
+
+  getStore(id:string){
+    var instance = this;
+    var config = {
+      method: 'get',
+      url: 'http://localhost:5236/store/get/' + id,
+      headers: {}
+    };
+    var instance = this;
+    
+    axios(config)
+      .then(function (response: any) {
+        instance.store = response.data;
       })
       .catch(function (error: any) {
         console.log(error);

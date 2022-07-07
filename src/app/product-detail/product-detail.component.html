@@ -4,11 +4,11 @@
         <div class="item-b">{{ product.description}}</div>
         <div class="item-c"> 
             <p>{{product.unit_price | currency}}</p>  
-                <img src="../../assets/Icons/heart.svg" alt="" 
-                style="filter: invert(8%) sepia(89%) saturate(7466%) hue-rotate(11deg) brightness(97%) contrast(114%);"
-                (click)="AddProductToWishList(product.idStocks)">
+            <img src="../../assets/Icons/heart.svg" alt="" 
+            style="filter: invert(8%) sepia(89%) saturate(7466%) hue-rotate(11deg) brightness(97%) contrast(114%);"
+            (click)="AddProductToWishList(product.idStocks)">
         </div>
-        <div class="item-d"><button class="button-5" role="button">Comprar</button></div>
+        <div class="item-d"><button class="button-5" (click)="makePurchase()">Comprar</button></div>
         <div class="item-e"><img src={{product.image}} alt=""></div>
     </div>
 </div>

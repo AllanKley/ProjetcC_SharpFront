@@ -8,4 +8,5 @@ export interface Product {
     idStocks:number;
     idWishlist:number;
     quantity:number;
+    storeCNPJ:string;
   }
