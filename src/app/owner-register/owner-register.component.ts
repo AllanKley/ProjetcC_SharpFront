@@ -50,9 +50,6 @@ export class OwnerRegisterComponent implements OnInit {
       this.VerifyInputFieldIsNull(passwordInput) &&
       this.VerifyPasswordIsValid(passwordInput);
 
-    console.log(dateInput.value);
-    console.log();
-
     let result =
       nameBoolean &&
       phoneBoolean &&
@@ -97,12 +94,11 @@ export class OwnerRegisterComponent implements OnInit {
       
       axios(config)
         .then(function (response) {
-          
-          instance.RegisterStore(response.data)
+          console.log("Owner foi")
+          instance.RegisterStore(response.data.response)
         })
         .catch(function (error) {
           let errors = error.response.data;
-          console.log(errors);
           if (errors.email) {
             instance.EmailError = errors.email;
           }
@@ -138,6 +134,7 @@ export class OwnerRegisterComponent implements OnInit {
     
     axios(config)
     .then(function (response) {
+      console.log("Aqui tbm")
       console.log(JSON.stringify(response.data));
     })
     .catch(function (error) {
@@ -248,28 +245,6 @@ export class OwnerRegisterComponent implements OnInit {
     phoneField.value = phoneValue;
   }
 
-  ViaCEPAPI() {
-    let input = this.getInputField('#cep');
-
-    if (input.value.length == 9) {
-      var cep = input.value.replace('-', '');
-      console.log(cep);
-
-      var config = {
-        method: 'get',
-        url: 'viacep.com.br/ws/' + cep + '/json/',
-        headers: {},
-      };
-
-      axios(config)
-        .then(function (response) {
-          console.log(JSON.stringify(response.data));
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    }
-  }
 }
 
 
