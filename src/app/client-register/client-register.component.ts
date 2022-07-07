@@ -10,8 +10,7 @@ import axios from 'axios';
   styleUrls: ['./client-register.component.css'],
 })
 export class ClientRegisterComponent implements OnInit {
-
-  EmailError : string | undefined;
+  EmailError: string | undefined;
   DocumentError: string | undefined;
   LoginError: string | undefined;
 
@@ -49,8 +48,8 @@ export class ClientRegisterComponent implements OnInit {
       this.VerifyInputFieldIsNull(passwordInput) &&
       this.VerifyPasswordIsValid(passwordInput);
 
-    console.log(dateInput.value)
-      console.log()
+    console.log(dateInput.value);
+    console.log();
 
     let result =
       nameBoolean &&
@@ -62,7 +61,6 @@ export class ClientRegisterComponent implements OnInit {
       passwordBoolean;
 
     if (result == true) {
-
       var data = JSON.stringify({
         name: nameInput.value,
         email: emailInput.value,
@@ -94,16 +92,16 @@ export class ClientRegisterComponent implements OnInit {
           console.log(JSON.stringify(response.data));
         })
         .catch(function (error) {
-          let errors = (error.response.data)
-          console.log(errors)
-          if(errors.email){
+          let errors = error.response.data;
+          console.log(errors);
+          if (errors.email) {
             instance.EmailError = errors.email;
           }
-          if(errors.document){
+          if (errors.document) {
             instance.DocumentError = errors.document;
           }
-          if(errors.login){
-            instance.LoginError= errors.login;
+          if (errors.login) {
+            instance.LoginError = errors.login;
           }
         });
     }
@@ -194,13 +192,11 @@ export class ClientRegisterComponent implements OnInit {
     let phoneField = this.getInputField('#phone') as HTMLInputElement;
     let phoneValue = phoneField.value;
     let number = /[0-9]/;
-    if( key != 8 && key != 46 ){
-
-      if(!number.test(phoneValue[phoneValue.length-1])){
-        let alpha = /[a-zA-Z]/
-        phoneValue =  phoneValue.replace(alpha,"");
-      }
-       else if (phoneValue.length == 1) {
+    if (key != 8 && key != 46) {
+      if (!number.test(phoneValue[phoneValue.length - 1])) {
+        let alpha = /[a-zA-Z]/;
+        phoneValue = phoneValue.replace(alpha, '');
+      } else if (phoneValue.length == 1) {
         phoneValue = '(' + phoneValue;
       } else if (phoneValue.length == 3) {
         phoneValue = phoneValue + ') ';
@@ -208,6 +204,29 @@ export class ClientRegisterComponent implements OnInit {
         phoneValue += '-';
       }
     }
-    phoneField.value = phoneValue
+    phoneField.value = phoneValue;
+  }
+
+  ViaCEPAPI() {
+    let input = this.getInputField('#cep');
+
+    if (input.value.length == 9) {
+      var cep = input.value.replace('-', '');
+      console.log(cep);
+
+      var config = {
+        method: 'get',
+        url: 'viacep.com.br/ws/' + cep +  '/json/',
+        headers: {},
+      };
+
+      axios(config)
+        .then(function (response) {
+          console.log(JSON.stringify(response.data));
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
   }
 }
