@@ -102,6 +102,41 @@
     <span class="alert invisible" id="password-none">Campo Obrigatorio*</span>
     <span class="alert invisible" id="password-valid">A senha deve ter no minimo 6 digitos e no maximo 12 e conter Letras( Maiusculas e minusculas), numeros e caracteres especiais</span>
   </div>
+
+  <div class="form-field-container">
+    <div class="form-field">
+      <label for="password" class="form-label">CEP:</label>
+      <input
+        type="text"
+        placeholder="Insira o CEP,  somente numeros"
+        id="cep"
+        class="form-input"
+        (keyup)="ViaCEPAPI()"
+      />
+    </div>
+  </div>
+
+  <div class="form-field-container">
+    <div class="form-field">
+      <label for="" class="form-label">Logadouro:</label>
+      <input class="form-input" type="text" name="" id="Logadouro" placeholder="insira o longadouro">
+    </div>
+  </div>
+
+  <div class="form-field-container">
+    <div class="form-field">
+      <label for="" class="form-label">Numero:</label>
+      <input class="form-input" type="text" name="" id="numero" placeholder="Insira o numeor">
+    </div>
+  </div>
+
+  <div class="form-field-container">
+    <div class="form-field">
+      <label for="" class="form-label">Complemento:</label>
+      <input class="form-input" type="text" name="" id="complemento" placeholder="Insira o complemenot caso tenha">
+    </div>
+  </div>
+
   <div class="form-field-button">
     <button class="button-5 form-button" id="save" (click)="VerifyForm()">
       Save changes

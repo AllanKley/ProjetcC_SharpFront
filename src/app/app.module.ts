@@ -14,6 +14,7 @@ import { CommonModule } from '@angular/common';
 import { WishListComponent } from './wish-list/wish-list.component';
 import { ProfileClientComponent } from './profile-client/profile-client.component';
 import { PurchaseClientComponent } from './purchase-client/purchase-client.component';
+import { OwnerLoginComponent } from './owner-login/owner-login.component';
 
 
 @NgModule({
@@ -27,6 +28,8 @@ import { PurchaseClientComponent } from './purchase-client/purchase-client.compo
     WishListComponent,
     ProfileClientComponent,
     PurchaseClientComponent,
+    OwnerLoginComponent
+
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,8 @@ import { PurchaseClientComponent } from './purchase-client/purchase-client.compo
       {path: 'client/login', component : LoginClientComponent},
       {path: "wishlist", component:WishListComponent},
       {path: 'client/profile', component : ProfileClientComponent},
-      {path: 'client/purchase', component : PurchaseClientComponent}
+      {path: 'client/purchase', component : PurchaseClientComponent},
+      {path: 'owner/login', component:OwnerLoginComponent}
     ])
   ],
   providers: [],
