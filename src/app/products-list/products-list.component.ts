@@ -1,7 +1,6 @@
 // import { products, Product } from './../products';
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../products';
-//const axios = require('axios');
 import axios from 'axios';
 
 @Component({
@@ -19,6 +18,9 @@ export class ProductsListComponent implements OnInit {
 
   ngOnInit(): void {}
 
+
+
+
   getAllProducts() {
     var config = {
       method: 'get',
@@ -30,10 +32,13 @@ export class ProductsListComponent implements OnInit {
     axios(config)
       .then(function (response: any) {
         instance.products = response.data;
-        console.log(response.data.name);
       })
       .catch(function (error: any) {});
   }
+
+
+
+
 
   AddProductToWishList(idStocks: number) {
     var data = JSON.stringify({

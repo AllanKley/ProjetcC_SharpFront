@@ -14,9 +14,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private router: Router) { }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   login() {
     let user = document.getElementById("username") as HTMLInputElement;
@@ -29,7 +27,7 @@ export class LoginComponent implements OnInit {
 
 
     if(this.client){
-      console.log("entrou client");
+
       var config = {
         method: 'post',
         url: 'http://localhost:5236/client/login',
@@ -39,7 +37,7 @@ export class LoginComponent implements OnInit {
         data: data
       };
     }else{
-      console.log("entrou owner");
+ 
       var config = {
         method: 'post',
         url: 'http://localhost:5236/owner/login',
@@ -57,6 +55,7 @@ export class LoginComponent implements OnInit {
     axios(config)
       .then(function (response) {
         localStorage.setItem('authToken', response.data);
+        
         instance.router.navigate(['']);
       })
       .catch(function (error) {
