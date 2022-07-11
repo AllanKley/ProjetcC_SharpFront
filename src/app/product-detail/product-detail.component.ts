@@ -38,7 +38,7 @@ export class ProductDetailComponent implements OnInit {
     axios(config)
       .then(function (response: any) {
         instance.product = response.data;
-
+        // instance.product?.unit_price = instance.product?.unit_price;
         if (instance.product != undefined){
           instance.product.unit_price = response.data.unit_price;
           if(instance.product.storeCNPJ != undefined){

@@ -8,13 +8,12 @@ import { TopBarComponent } from './top-bar/top-bar.component';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ClientRegisterComponent } from './client-register/client-register.component';
-import { LoginClientComponent } from './login-client/login-client.component';
+import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { WishListComponent } from './wish-list/wish-list.component';
 import { ProfileClientComponent } from './profile-client/profile-client.component';
 import { PurchaseClientComponent } from './purchase-client/purchase-client.component';
-import { OwnerLoginComponent } from './owner-login/owner-login.component';
 import { OwnerRegisterComponent } from './owner-register/owner-register.component';
 import { OwnerSalesComponent } from './owner-sales/owner-sales.component';
 
@@ -26,12 +25,10 @@ import { OwnerSalesComponent } from './owner-sales/owner-sales.component';
     ProductsListComponent,
     ProductDetailComponent,
     ClientRegisterComponent,
-    LoginClientComponent,
+    LoginComponent,
     WishListComponent,
     ProfileClientComponent,
     PurchaseClientComponent,
-    OwnerLoginComponent,
-    OwnerRegisterComponent,
     OwnerSalesComponent
 
   ],
@@ -45,11 +42,10 @@ import { OwnerSalesComponent } from './owner-sales/owner-sales.component';
       {path: '', component: ProductsListComponent},
       {path: 'product/:productID', component: ProductDetailComponent},
       {path: 'client/register', component : ClientRegisterComponent},
-      {path: 'client/login', component : LoginClientComponent},
+      {path: 'client/login', component : LoginComponent},
       {path: "wishlist", component:WishListComponent},
       {path: 'client/profile', component : ProfileClientComponent},
       {path: 'client/purchase', component : PurchaseClientComponent},
-      {path: 'owner/login', component:OwnerLoginComponent},
       {path:'owner/register', component:OwnerRegisterComponent},
       {path:'owner/sales', component: OwnerSalesComponent},
     ])
