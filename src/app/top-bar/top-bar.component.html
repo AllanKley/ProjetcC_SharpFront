@@ -18,10 +18,11 @@
                     </a>
 
                     <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="navbarDarkDropdownMenuLink">
-                        <li><a class="dropdown-item" (click)="profile()">Perfil</a></li>
-                        <li><a class="dropdown-item" [routerLink]="['client/purchase']">Purchases</a></li>
-                        <li><a class="dropdown-item" [routerLink]="['wishlist']">WishList</a></li>
-                        <li><a class="dropdown-item" [routerLink]="['client/login']">Login</a></li>
+                        <li *ngIf="client"><a class="dropdown-item" (click)="profile()">Perfil</a></li>
+                        <li *ngIf="client"><a class="dropdown-item" [routerLink]="['client/purchase']">Purchases</a></li>
+                        <li *ngIf="client"><a class="dropdown-item" [routerLink]="['wishlist']">WishList</a></li>
+                        <li *ngIf="client"><a class="dropdown-item" (click)="sair()">Sair</a></li>
+                        <li *ngIf="logado == false"><a class="dropdown-item" [routerLink]="['client/login']">Login</a></li>
                     </ul>
                 </li>
             </ul>

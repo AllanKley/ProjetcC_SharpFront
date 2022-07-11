@@ -24,7 +24,9 @@
         <button class="button-5" role="button" (click)="login()">Login</button>
         <button class="button-5" role="button" (click)="Cadatro()">Cadastre-se</button>
     </div>
-    <a href="client/login">Usuario? Clique aqui!</a>
+
+    <a (click)="changeUser()" *ngIf="client">Logista? Clique aqui!</a>
+    <a (click)="changeUser()" *ngIf="owner">Cliente? Clique aqui!</a>
 </div>
 
 

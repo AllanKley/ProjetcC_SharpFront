@@ -8,9 +8,14 @@ import { Router } from '@angular/router';
 })
 export class TopBarComponent implements OnInit {
   @Input() titulo = ""
+
+  client: boolean = false;
+  owner: boolean = false;
+  logado: boolean = false;
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+    this.checkUser();
   }
 
   profile(){
@@ -20,10 +25,24 @@ export class TopBarComponent implements OnInit {
     }else{
       instance.router.navigate(['client/login'])
     }
-      
-    
+  }
+
+  sair(){
+    var instance = this;
+    localStorage.clear();
+    instance.router.navigate(['client/login']);
+  }
+
+  checkUser(){
+    if(localStorage.getItem('authToken') != null){
+      this.logado = true;
+      this.client = true;
+    }
+    console.log(this.logado);
+
   }
 }
+
 
 
 

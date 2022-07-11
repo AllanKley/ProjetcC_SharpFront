@@ -1,66 +1,87 @@
-.item-a {
-  grid-area: ProductName;
-  font-size: large;
-  font-size: 2.5em;
-  align-self: center;
-}
-
-.item-b {
-  grid-area: ProductDecription;
+.main-container{
+  background-color: var(--Cor2);
+  width: 1100px;
+  height: 800px;
+  margin-inline: auto;
   
-  font-size: 1.5em;
+  position: relative;
+  border-radius: 10px;
 }
-.item-c {
-  grid-area: ProductPrice;
-  font-size: 3em;
 
+.container-information{
+  width: 50%;
+  height: 100%;
+  margin-left: auto;
 
+  
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+  flex-direction: column;
+}
+
+.purchase{
+  margin-top: auto;
+  margin-bottom: 40px;
+  width: 200px;
+  display: flex;
   align-items: center;
-
-  text-align: center;
+  justify-content: center;
 }
 
-.item-c img{
-  width: 1em;
-  height: 1em;
+.container-image{
+  position: absolute;
+  top: 60px;
+  bottom: 60px;
+  left: -50px;
+  background-color: gray;
+  border-radius: 10px;
+  width: 500px;
 }
 
-.item-c img:hover{
-  transform:scale(1.15);
-  transition: ease-in-out .3s;
-}
-
-.item-c p{
-  align-self: center;
-  text-align: center;
-  
-}
-.item-d {
-  grid-area: PurchaseButton;
-  justify-self: center;
-  align-self: center;
-}
-.item-e {
-  margin: auto auto;
-  grid-area: ProductPicture;
-}
-
-
-.container {
-  grid-gap: 2em;
-  margin: auto auto;
-  margin-top: 3em;
-  max-width: 70%;
-  height: 45em;
+.image{
+  position: relative;
   display: grid;
-  grid-template-columns: 3fr 7fr;
-  grid-template-rows: 15% 50%;
-  grid-template-areas: 
-      "ProductPicture ProductName "
-      "ProductPicture ProductDecription"
-      "ProductPrice PurchaseButton";
+  place-items: center;
+  height: 100%;
+}
+
+.photo{
+  width: 500px;
+}
+
+.icon{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 40px;
+}
+
+.name{
+  color:var(--Cor3);
+  margin-top: 60px;
+  font-size: 3em;
+  font-weight: bold;
+  letter-spacing: 5px;
+}
+
+.description{
+  color:var(--Cor1);
+  margin-top: 100px;
+}
+
+.price{
+  color:var(--Cor1);
+  margin-top: 60px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.price p{
+  color:var(--Cor1);
+  font-size: 2em;
+}
+.price h2{
+  color:var(--Cor1);
+  font-size: 5em;
 }
 
