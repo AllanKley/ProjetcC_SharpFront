@@ -15,6 +15,7 @@ import { WishListComponent } from './wish-list/wish-list.component';
 import { ProfileClientComponent } from './profile-client/profile-client.component';
 import { PurchaseClientComponent } from './purchase-client/purchase-client.component';
 import { OwnerRegisterComponent } from './owner-register/owner-register.component';
+import { OwnerSalesComponent } from './owner-sales/owner-sales.component';
 
 
 @NgModule({
@@ -28,7 +29,7 @@ import { OwnerRegisterComponent } from './owner-register/owner-register.componen
     WishListComponent,
     ProfileClientComponent,
     PurchaseClientComponent,
-    OwnerRegisterComponent
+    OwnerSalesComponent
 
   ],
   imports: [
@@ -45,7 +46,8 @@ import { OwnerRegisterComponent } from './owner-register/owner-register.componen
       {path: "wishlist", component:WishListComponent},
       {path: 'client/profile', component : ProfileClientComponent},
       {path: 'client/purchase', component : PurchaseClientComponent},
-      {path:'owner/register', component:OwnerRegisterComponent}
+      {path:'owner/register', component:OwnerRegisterComponent},
+      {path:'owner/sales', component: OwnerSalesComponent},
     ])
   ],
   providers: [],

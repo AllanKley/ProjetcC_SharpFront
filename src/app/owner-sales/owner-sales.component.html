@@ -1,0 +1,20 @@
+<div class="container">
+    <table *ngIf="Sales">
+        <thead>
+            <th>Product Name</th>
+            <th>Date Of Sale</th>
+            <th>Total amount</th>
+            <th>Client Name</th>
+            <th>See</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let sale of Sales">
+                <td>{{sale.productName}}</td>
+                <td>{{sale.dataOfPurchase}}</td>
+                <td>{{sale.purchaseAmount}}</td>
+                <td>{{sale.clientName}}</td>
+                <td> ação</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
