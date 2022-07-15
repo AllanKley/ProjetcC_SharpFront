@@ -49,7 +49,7 @@ export class TopBarComponent implements OnInit {
       this.owner = false;
     }else{
       var data = JSON.stringify({});
-
+      console.log(data)
       var config = {
         method: 'get',
         url: 'http://localhost:5236/client/test',
