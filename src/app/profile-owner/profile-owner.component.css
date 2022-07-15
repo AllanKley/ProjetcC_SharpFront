@@ -1,0 +1,52 @@
+
+.name {
+    grid-area: name;
+  
+  }
+  
+  .email {
+    grid-area: email;
+  
+  }
+  
+  .phone {
+    grid-area: phone;
+  
+  }
+  
+  .birth {
+    grid-area: birth;
+  
+  }
+  
+  .document {
+    grid-area: document;
+   
+  }
+  
+  .container-profile {
+    margin: auto auto;
+    margin-top: 2em;
+    max-width: 25em;
+    height: 30em;
+  
+    align-items: center;
+    justify-items: center;
+    background-color: var(--Cor1);
+    border-radius: 1em;
+    box-shadow: 0.09rem 0.1rem 0.9rem -0.09rem var(--Cor2);
+    border-top: .4em solid var(--Cor3);
+  
+    font-size: 1.5em;
+  
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    grid-template-areas:
+      /* "Photo" */
+      "name"
+      "email"
+      "phone"
+      "birth"
+      "document";
+  }

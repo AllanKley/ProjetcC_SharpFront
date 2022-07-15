@@ -1,0 +1,16 @@
+<app-top-bar></app-top-bar>
+
+<div class="content-container">
+    <div *ngIf="owner">
+    
+        <div class="container-profile">
+            <!-- <div class="photo"><img src={{owner.photo}} alt=""></div> -->
+            <div class="name">nome: {{owner.name}}</div>
+            <div class="email">email: {{owner.email}}</div>
+            <div class="phone">telefone: {{owner.phone}}</div>
+            <div class="birth">data nascimento: {{owner.date_of_birth}}</div>
+            <div class="document">documento: {{owner.document}}</div>
+        </div>
+    </div>
+</div>
+

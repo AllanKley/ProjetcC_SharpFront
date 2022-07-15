@@ -25,7 +25,11 @@ export class TopBarComponent implements OnInit {
 
   profile(){
     if(localStorage.getItem('authToken') != null)
-      this.router.navigate(['client/profile']);
+      if(this.client){
+        this.router.navigate(['client/profile']);
+      }else{
+        this.router.navigate(['owner/profile']);
+      }
     else
       this.router.navigate(['client/login'])  
   }
