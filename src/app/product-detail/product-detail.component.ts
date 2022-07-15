@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../products';
 import { ActivatedRoute } from '@angular/router'
 import axios from 'axios';
+import {Client} from "../client";
 
 @Component({
   selector: 'app-product-detail',
@@ -11,19 +12,43 @@ import axios from 'axios';
 })
 export class ProductDetailComponent implements OnInit {
 
-  product: Product| undefined;
+  product: Product | undefined;
+  client: Client | undefined;
   store:{};
-  client:{};
 
   constructor(private route: ActivatedRoute) {
     this.store = {}
-    this.client = {}
+
   }
 
   ngOnInit(): void {
     const routeParams = this.route.snapshot.paramMap;
     const productIdFromRoute = Number(routeParams.get('productID'));
     this.getProduct(productIdFromRoute);
+    this.getClient();
+  }
+
+  async getClient(){
+    var data = JSON.stringify({});
+
+    var config = {
+      method: 'get',
+      url: 'http://localhost:5236/client/get',
+      headers: { 
+        'Authorization': 'Bearer ' + localStorage.getItem("authToken"),
+        'Content-Type': 'application/json'
+      },
+      data : data
+    };
+
+    var response = await axios(config);
+
+    this.client = response.data;
+
+    if(this.client != undefined){
+      this.client.date_of_birth = this.client.date_of_birth.substring(0, 10).toString();
+    }
+
   }
 
   getProduct(id: number) {
@@ -77,10 +102,12 @@ export class ProductDetailComponent implements OnInit {
 
   makePurchase() {
     var instance = this;
-    let date_purchase = Date.now();
+    let date_purchase = new Date().toISOString().slice(0, 10);
+  
 
-
+    
     var data = JSON.stringify({
+      "client": this.client,
       "date_purchase": date_purchase,
       "payment_type": 2,
       "purchase_status": 1,
@@ -88,10 +115,11 @@ export class ProductDetailComponent implements OnInit {
       "number_confirmation": Math.random().toString(36).slice(2),
       "number_nf": Math.random().toString(36).slice(2),
       "store": this.store,
-      "productsDTO": [this.product]
+      "productsDTO": this.product,
     });
     var token = localStorage.getItem("authToken");
-
+    
+    
     console.log(data);
 
     var config = {
