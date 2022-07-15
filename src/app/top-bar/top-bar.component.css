@@ -1,7 +1,7 @@
-
-.navbar{
-    height: 100% !important;
-    align-self: top;
+.navbar-nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .margin{
@@ -9,4 +9,9 @@
     margin-right: 2em;
 }
 
-
+.position-top{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}

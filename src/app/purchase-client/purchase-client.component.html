@@ -1,24 +1,27 @@
 <app-top-bar></app-top-bar>
 
-<div class="productsList" *ngIf="purchases">
-    <div class="productComponent" *ngFor="let purchase of purchases" >
+<div class="content-container">
 
-      <div class="container">
-        <img src="{{purchase.product.image}}" alt="">
-    
-        <a title="{{purchase.product.name}}" 
-        [routerLink]="['/product/' + purchase.product.id]">
-            <h1>{{purchase.product.name}}</h1>
-        </a>
-    
-        <p>{{purchase.product.description}}</p>
-    
-        <div class="price">
-            <h1>{{purchase.purchase_values | currency}}</h1>
-        </div>
-
-
-    </div>
+  <div class="productsList" *ngIf="purchases">
+      <div class="productComponent" *ngFor="let purchase of purchases" >
   
+        <div class="container">
+          <img src="{{purchase.product.image}}" alt="">
+      
+          <a title="{{purchase.product.name}}" 
+          [routerLink]="['/product/' + purchase.product.id]">
+              <h1>{{purchase.product.name}}</h1>
+          </a>
+      
+          <p>{{purchase.product.description}}</p>
+      
+          <div class="price">
+              <h1>{{purchase.purchase_values | currency}}</h1>
+          </div>
+  
+  
+      </div>
+    
+      </div>
     </div>
-  </div>
+</div>
