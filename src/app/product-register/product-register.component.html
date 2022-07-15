@@ -1,0 +1,78 @@
+<app-top-bar></app-top-bar>
+
+<div class="content-container">
+    <form class="form">
+
+        <div class="form-field-container">
+            <div class="form-field">
+                <label for="birth" class="form-label">nome produto:</label>
+                <input type="date" placeholder="insert your Date Of Birth" id="birth" class="form-input" />
+            </div>
+            <span class="alert invisible" id="birth-none">Campo Obrigatorio*</span>
+        </div>
+    
+        <div class="form-field-container">
+            <div class="form-field">
+                <label for="login" class="form-label">codigo barras:</label>
+                <input type="text" placeholder="insert your Login" id="login" class="form-input" />
+            </div>
+            <span class="alert invisible" id="login-none">Campo Obrigatorio*</span>
+            <span class="alert invisible" id="login-lenght">O Login precisa ter mais de 4 digitos</span>
+            <span class="alert" *ngIf="LoginError!=undefined">{{LoginError}}</span>
+        </div>
+    
+        <div class="form-field-container">
+            <div class="form-field">
+                <label for="password" class="form-label">descrição:</label>
+                <input type="text" placeholder="Insira o seu Password" id="password" class="form-input" />
+            </div>
+            <span class="alert invisible" id="password-none">Campo Obrigatorio*</span>
+            <span class="alert invisible" id="password-valid">A senha deve ter no minimo 6 digitos e no maximo 12 e conter
+                Letras( Maiusculas e minusculas), numeros e caracteres especiais</span>
+        </div>
+        <div class="form-field-container">
+            <div class="form-field">
+                <label for="" class="form-label">imagem:</label>
+                <input class="form-input" type="text" name="" id="estado" placeholder="Insira o numeor">
+            </div>
+        </div>
+        
+        <div class="form-field-container">
+            <div class="form-field">
+                <label for="name" class="form-label">Quantidade:</label>
+                <input type=" text" class="form-input" placeholder="Insert your name" minlength="3" id="name" />
+            </div>
+            <span class="alert invisible" id="name-none">Campo Obrigatorio*</span>
+            <span class="alert invisible" id="name-lenght">O Nome precisa ter mais de 3 letras</span>
+        </div>
+        <div class="form-field-container">
+            <div class="form-field">
+                <label for="phone" class="form-label">Preço:</label>
+                <input type="text" placeholder="insert your phone ex: (XX) XXXXX-XXXX" id="phone" name="phone"
+                    class="form-input" (keyup)="PhoneMaskField($event)" />
+            </div>
+            <span class="alert invisible" id="phone-none">Campo Obrigatorio*</span>
+            <span class="alert invisible" id="phone-lenght">O Numero deve ter 11 digitos</span>
+        </div>
+    
+        <div class="form-field-container">
+            <div class="form-field">
+                <label for="document" class="form-label">Loja Select box:</label>
+                <input type="text" placeholder="Insert your document ex: 999.999.999-52" id="document" class="form-input" />
+            </div>
+            <span class="alert invisible" id="document-none">Campo Obrigatorio*</span>
+            <span *ngIf="DocumentError!=undefined" class="alert">{{DocumentError}}</span>
+        </div>
+    
+        
+        <div class="form-field-button">
+            <button class="button-5 form-button" id="save" (click)="VerifyForm()">
+                Save changes
+            </button>
+            <button class="button-5 form-button" id="reset" (click)="Cancel()">Cancel</button>
+        </div>
+    </form>
+</div>
+
+
+
