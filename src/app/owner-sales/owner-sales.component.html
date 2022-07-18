@@ -13,8 +13,40 @@
                 <td>{{sale.dataOfPurchase}}</td>
                 <td>{{sale.purchaseAmount}}</td>
                 <td>{{sale.clientName}}</td>
-                <td> ação</td>
+                <td data-bs-toggle="modal" data-bs-target="#DetailsSales" (click)="LoadDetails(sale.id)"><img  class="eye" src="https://www.svgrepo.com/show/12044/eye.svg" alt=""></td>
             </tr>
         </tbody>
     </table>
+
+    <!-- Modal Adicionar -->
+<div class="modal fade" id="DetailsSales" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">sales order Details</h5>
+        </div>
+        <div class="modal-body">
+            <div *ngIf="SalesDetails">
+                <p>Product: {{SalesDetails.product.name}}</p>
+              <div>
+                  <img src={{SalesDetails.product.image}} alt="">
+                  <p>Date of purchase: {{SalesDetails.date_purchase | date:'dd/MM/yyyy'}}</p>
+                  <p>Payment type: {{SalesDetails.payment_type}}</p>
+                  <p>Nf Number: {{SalesDetails.number_nf}}</p>
+                  <p>Client name: {{SalesDetails.client.name}}</p>
+                  <p>Client Document: {{SalesDetails.client.document}}</p>
+                  <p>Client Email: {{SalesDetails.client.email}}</p>
+                  <p>Client Phone: {{SalesDetails.client.phone}}</p>
+                  <p>Confirmation Number: {{SalesDetails.number_confirmation}}</p>
+              </div>
+            </div>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target= "#Sucesso"  data-bs-dismiss="modal">Salvar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

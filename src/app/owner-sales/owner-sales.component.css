@@ -14,3 +14,11 @@ td,th{
 tr:nth-child(2n){
     background-color: white;
 }
+
+.eye{
+    width: 32px;
+    filter: invert(34%) sepia(65%) saturate(2405%) hue-rotate(192deg) brightness(96%) contrast(106%);
+}
+.eye{
+    filter: invert(59%) sepia(48%) saturate(532%) hue-rotate(169deg) brightness(92%) contrast(103%);
+}
