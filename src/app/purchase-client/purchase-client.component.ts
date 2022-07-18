@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import axios from 'axios';
 import { elementAt } from 'rxjs';
 import { Product } from '../products';
@@ -12,7 +13,10 @@ export class PurchaseClientComponent implements OnInit {
 
   purchases : [any] |undefined;
 
+  constructor(private router: Router) {}
+
   ngOnInit(): void {
+    this.CheckTokenClient();
     this.LoadProducts();
   }
 
@@ -23,7 +27,7 @@ export class PurchaseClientComponent implements OnInit {
       method: 'get',
       url: 'http://localhost:5236/purchase/get/client',
       headers: {
-        'Authorization': 'Bearer ' + localStorage.getItem("authToken"),
+        'Authorization': 'Bearer ' + localStorage.getItem("authTokenClient"),
         'Content-Type': 'application/json'
       }
     };
@@ -41,7 +45,13 @@ export class PurchaseClientComponent implements OnInit {
   }
 
 
-
+  CheckTokenClient() {
+    var token = localStorage.getItem("authTokenClient")
+    if (!token) {
+      this.router.navigate(["client/login"]);
+    }
+    // private router: Router
+  }
 
 
 

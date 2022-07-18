@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import axios from 'axios';
 import { DatePipe } from '@angular/common'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-owner-sales',
@@ -11,9 +12,10 @@ export class OwnerSalesComponent implements OnInit {
 
   Sales: [any] | undefined;
   SalesDetails: any | undefined;
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+    this.CheckTokenOwner();
     this.LoadData();
   }
 
@@ -32,7 +34,6 @@ export class OwnerSalesComponent implements OnInit {
         console.log(error);
       });
 
-
   }
 
   LoadData() {
@@ -49,7 +50,14 @@ export class OwnerSalesComponent implements OnInit {
       .catch(function (error) {
         console.log(error);
       });
+    
+  }
 
+  CheckTokenOwner(){
+    var token = localStorage.getItem("authTokenOwner")
+    if(!token){
+      this.router.navigate(["client/login"]);
+    }
   }
 
 }

@@ -45,6 +45,7 @@ export class ProductRegisterComponent implements OnInit {
   store: Store | undefined;
 
   ngOnInit(): void {
+    this.CheckTokenOwner();
     this.getStores();
   }
 
@@ -202,5 +203,111 @@ export class ProductRegisterComponent implements OnInit {
   
   Cancel(){
     window.location.reload();
+  }
+  activeVisibleSpan(id: string) {
+    var span = document.querySelector(id);
+    span?.classList.remove('invisible');
+  }
+
+  desactiveVisibleSpan(id: string) {
+    var span = document.querySelector(id);
+    span?.classList.add('invisible');
+  }
+
+  getInputField(id: string) {
+    let response = document.querySelector(id) as HTMLInputElement;
+    return response;
+  }
+
+  VerifyInputFieldIsNull(input: HTMLInputElement) {
+    let prop = '#' + input.id + '-none';
+    if (input.value.length == 0) {
+      this.activeVisibleSpan(prop);
+      return false;
+    } else {
+      this.desactiveVisibleSpan(prop);
+      return true;
+    }
+  }
+
+  VerifyInputFieldSize(size: number, input: HTMLInputElement) {
+    let prop = '#' + input.id + '-lenght';
+    if (input.value.length >= size) {
+      this.desactiveVisibleSpan(prop);
+      return true;
+    } else {
+      this.activeVisibleSpan(prop);
+      return false;
+    }
+  }
+
+  VerifyPhoneSize(input: HTMLInputElement) {
+    let prop = '#' + input.id + '-lenght';
+    if (input.value.length == 15) {
+      this.desactiveVisibleSpan(prop);
+      return true;
+    } else {
+      this.activeVisibleSpan(prop);
+      return false;
+    }
+  }
+
+  VerifyEmailIsValidy(Input: HTMLInputElement) {
+    let prop = '#' + Input.id + '-valid';
+    if (Input.value.includes('@') && Input.value.length > 3) {
+      this.desactiveVisibleSpan(prop);
+      return true;
+    } else {
+      this.activeVisibleSpan(prop);
+      return false;
+    }
+  }
+
+  VerifyPasswordIsValid(Input: HTMLInputElement) {
+    let value = Input.value;
+    let prop = '#' + Input.id + '-valid';
+    let ALPHA = /[A-Z]/;
+    let alpha = /[a-z]/;
+    let number = /[0-9]/;
+    let spec = /[\!\$\@\#\$\¨\(\*\_\).]/;
+    if (
+      ALPHA.test(value) &&
+      number.test(value) &&
+      alpha.test(value) &&
+      spec.test(value)
+    ) {
+      this.desactiveVisibleSpan(prop);
+      return true;
+    } else {
+      this.activeVisibleSpan(prop);
+      return false;
+    }
+  }
+
+  PhoneMaskField(event: KeyboardEvent) {
+    var key = event.keyCode || event.charCode;
+    let phoneField = this.getInputField('#phone') as HTMLInputElement;
+    let phoneValue = phoneField.value;
+    let number = /[0-9]/;
+    if (key != 8 && key != 46) {
+      if (!number.test(phoneValue[phoneValue.length - 1])) {
+        let alpha = /[a-zA-Z]/;
+        phoneValue = phoneValue.replace(alpha, '');
+      } else if (phoneValue.length == 1) {
+        phoneValue = '(' + phoneValue;
+      } else if (phoneValue.length == 3) {
+        phoneValue = phoneValue + ') ';
+      } else if (phoneValue.length == 10) {
+        phoneValue += '-';
+      }
+    }
+    phoneField.value = phoneValue;
+  }
+
+  CheckTokenOwner() {
+    var token = localStorage.getItem("authTokenOwner")
+    if (!token) {
+      this.router.navigate(["client/login"]);
+    }
   }
 }

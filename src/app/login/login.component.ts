@@ -14,7 +14,9 @@ export class LoginComponent implements OnInit {
 
   constructor(private router: Router) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    localStorage.clear();
+   }
 
   login() {
     let user = document.getElementById("username") as HTMLInputElement;
@@ -25,8 +27,8 @@ export class LoginComponent implements OnInit {
       "passwd": passwd.value
     });
 
-
-    if(this.client){
+    localStorage.clear();
+    if (this.client) {
 
       var config = {
         method: 'post',
@@ -36,42 +38,57 @@ export class LoginComponent implements OnInit {
         },
         data: data
       };
-    }else{
- 
+
+      let instance = this;
+      localStorage.removeItem('authToken');
+      axios(config)
+        .then(function (response) {
+          localStorage.setItem('authTokenClient', response.data);
+
+          instance.router.navigate(['']);
+        })
+        .catch(function (error) {
+        })
+    } else {
+
       var config = {
         method: 'post',
         url: 'http://localhost:5236/owner/login',
-        headers: { 
+        headers: {
           'Content-Type': 'application/json'
         },
-        data : data
+        data: data
       };
+
+      let instance = this;
+      localStorage.clear();
+      axios(config)
+        .then(function (response) {
+          localStorage.setItem('authTokenOwner', response.data);
+
+          instance.router.navigate(['']);
+        })
+        .catch(function (error) {
+        })
     }
 
-    
 
-    let instance = this;
-    localStorage.removeItem('authToken');
-    axios(config)
-      .then(function (response) {
-        localStorage.setItem('authToken', response.data);
-        
-        instance.router.navigate(['']);
-      })
-      .catch(function (error) {
-      })
+
+
   }
 
-  Cadatro(){
-    if(this.client)
+  Cadatro() {
+    if (this.client)
       this.router.navigate(["/client/register"]);
     else
       this.router.navigate(["/owner/register"]);
   }
 
-  changeUser(){
+  changeUser() {
     this.owner = !this.owner;
     this.client = !this.client;
   }
+
+  
 
 }

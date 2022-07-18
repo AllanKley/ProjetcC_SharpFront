@@ -15,28 +15,30 @@ export class TopBarComponent implements OnInit {
   client: boolean = false;
   owner: boolean = false;
   logado: boolean = false;
-  constructor(private router: Router) { 
- 
+  constructor(private router: Router) {
+
   }
 
   ngOnInit(): void {
     this.checkUser();
   }
 
-  profile(){
-    if(localStorage.getItem('authToken') != null)
-      if(this.client){
+  profile() {
+    if (localStorage.getItem('authTokenOwner') || localStorage.getItem('authTokenClient') != null) {
+      if (localStorage.getItem('authTokenClient')) {
         this.router.navigate(['client/profile']);
-      }else{
+      } else {
+        
         this.router.navigate(['owner/profile']);
       }
+    }
     else
-      this.router.navigate(['client/login'])  
+      this.router.navigate(['client/login'])
   }
 
 
-  
-  sair(){
+
+  sair() {
     var instance = this;
     localStorage.clear();
     instance.router.navigate(['client/login']);
@@ -44,13 +46,13 @@ export class TopBarComponent implements OnInit {
 
 
 
-  checkUser(){
-    
-    if(localStorage.getItem('authToken') == null){
+  checkUser() {
+    if (localStorage.getItem('authTokenClient') && localStorage.getItem('authTokenOwner') != null) {
       console.log("não logado");
       this.logado = false;
       this.client = false;
       this.owner = false;
+<<<<<<< HEAD
     }else{
       var data = JSON.stringify({});
      
@@ -81,13 +83,20 @@ export class TopBarComponent implements OnInit {
       })
       .catch(function (error) {
       })
+=======
+    } else {
+      if (localStorage.getItem('authTokenClient')) {
+        this.client = true;
+        this.owner = false;
+        this.logado = true;
+      } else {
+        this.client = false;
+        this.owner = true;
+        this.logado = true;
+      }
+>>>>>>> 02bbf8f869b958c5907584c00d4dd4a52a8c8cf9
     }
-
-    
-    
   }
-
-
 }
 
 
