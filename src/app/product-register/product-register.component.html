@@ -51,11 +51,10 @@
     
         <div class="form-field-container">
             <div class="form-field">
-                <label for="document" class="form-label">Store:</label>
+                <label for="document" class="form-label">Stores: </label>
                 <select name="store" id="store" class="form-select" placeholder="Selet the store">
-                    <option value="" disabled selected>Categorias</option>
-                        <option value="">Todas</option>
-                        <option value="{{categoria.cnpj}}" *ngFor="let categoria of stores">{{categoria.cnpj}}
+                    <option value="" disabled selected>Stores: </option>
+                        <option value="{{store.cnpj}}" *ngFor="let store of stores">{{store.name}}
                         </option>
                 </select>
             

@@ -1,19 +1,20 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, NgModel } from '@angular/forms';
 import { Router } from '@angular/router';
-//import { Client } from '../client';
+import { Client } from '../client';
 import {Product} from "../products";
 import axios from 'axios';
 
 export interface Owner {
   id: number;
   document: string;
-  
+
 }
 
 export interface Store {
   id: number;
   cnpj: string;
+  name: string
   owner: Owner;
 }
 
@@ -26,16 +27,28 @@ export interface Store {
 })
 export class ProductRegisterComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) { 
+    this.owner = {
+      name :  "",
+      phone : "",
+      email: "",
+      passwd: "",
+      login: "",
+      date_of_birth: "",
+      document: "",
+    };
+  }
 
+  owner: Client;
   product: Product | undefined;
   stores: Array<Store> | undefined;
+  store: Store | undefined;
 
   ngOnInit(): void {
     this.getStores();
   }
 
-  RegisterProduct(){
+  async RegisterProduct(){
     let QtdInput = document.getElementById('product') as HTMLInputElement;
     let barCodeInput = document.getElementById('barCode') as HTMLInputElement;
     let descriptionInput = document.getElementById('description') as HTMLInputElement;
@@ -47,7 +60,8 @@ export class ProductRegisterComponent implements OnInit {
       "description": descriptionInput.value,
       "image": imageInput.value,
     });
-  
+    
+    
     
     var config = {
       method: 'post',
@@ -59,16 +73,15 @@ export class ProductRegisterComponent implements OnInit {
     };
     
     let instance = this;
-    axios(config)
-    .then(function (response) {
-      instance.getProduct();
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+    var response = await axios(config);
+    
+   
   }
 
-  getProduct(){
+  async getProduct(){
+    await this.RegisterProduct();
+    
+    
     let barCodeInput = document.getElementById('barCode') as HTMLInputElement;
 
     var config = {
@@ -79,21 +92,96 @@ export class ProductRegisterComponent implements OnInit {
       },
     };
 
-    let instance = this;
-    axios(config)
-    .then(function (response) {
-      instance.product = response.data;
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+    
+
+    var response = await axios(config);
+   
+    this.product = response.data;
+  
   }
 
 
-  getStores(){
+
+
+  async RegisterStock(){
+    await this.getProduct()
+    
+    let QtdInput = document.getElementById('Qtd') as HTMLInputElement;
+    let priceInput = document.getElementById('price') as HTMLInputElement;
+    let storeInput = document.getElementById('store') as HTMLInputElement;
+
+    
+    await this.getStore(storeInput.value);
+    
+    let product = this.product;
+    let store = this.store;
+  
+    var data = JSON.stringify({
+      "quantity": QtdInput.value,
+      "unit_price": priceInput.value,
+      "product": product,
+      "store": store,
+    });
+
+  
+
+    var config = {
+      method: 'post',
+      url: 'http://localhost:5236/Stocks/addproduct',
+      headers: { 
+        'Content-Type': 'application/json'
+      },
+      data : data
+    };
+    console.log(data);
+    
+    var response = await axios(config);
+    console.log(JSON.stringify(response.data));
+  
+  }
+
+
+
+  
+
+
+  async getOwner(){
+    var data = JSON.stringify({});
+
     var config = {
       method: 'get',
-      url: 'http://localhost:5236/store/get/all',
+      url: 'http://localhost:5236/owner/get',
+      headers: { 
+        'Authorization': 'Bearer ' + localStorage.getItem("authToken"),
+        'Content-Type': 'application/json'
+      },
+      data : data
+    };
+    var response = await axios(config);
+    return response.data;
+  }
+
+  async getStore(cnpj:string){
+    var config = {
+      method: 'get',
+      url: 'http://localhost:5236/store/get/'+ cnpj,
+      headers: { 
+        'Content-Type': 'application/json'
+      },
+    };
+
+    var response = await axios(config); 
+    this.store = response.data;
+    
+    
+  }
+
+  async getStores(){
+    let owner = await this.getOwner();
+    
+    var config = {
+      method: 'get',
+      url: 'http://localhost:5236/store/get/allByOwner/' + owner.document,
       headers: { 
         'Content-Type': 'application/json'
       },
@@ -102,46 +190,13 @@ export class ProductRegisterComponent implements OnInit {
     let instance = this;
     axios(config)
     .then(function (response) {
+    
       instance.stores = response.data;
+    
     })
     .catch(function (error) {
       console.log(error);
     });
-  }
-
-  RegisterStock(){
-    this.RegisterProduct()
-    let QtdInput = document.getElementById('Qtd') as HTMLInputElement;
-    let priceInput = document.getElementById('price') as HTMLInputElement;
-    
-    let product = this.product;
-    let storeInput = document.getElementById('store') as HTMLInputElement;
-
-    
-    var data = JSON.stringify({
-      "quantity": QtdInput.value,
-      "unit_price": priceInput.value,
-      "product": product,
-      "store": storeInput.value,
-    });
-    
-    // var config = {
-    //   method: 'post',
-    //   url: 'http://localhost:5236/Stocks/addproduct',
-    //   headers: { 
-    //     'Content-Type': 'application/json'
-    //   },
-    //   data : data
-    // };
-    
-    // axios(config)
-    // .then(function (response) {
-    //   console.log("Aqui tbm")
-    //   console.log(JSON.stringify(response.data));
-    // })
-    // .catch(function (error) {
-    //   console.log(error);
-    // });
   }
   
   
