@@ -49,7 +49,7 @@ export class ProductsListComponent implements OnInit {
       method: 'post',
       url: 'http://localhost:5236/wishList/register',
       headers: {
-        Authorization:'Bearer '+ localStorage.getItem("authToken"),
+        Authorization:'Bearer '+ localStorage.getItem("authTokenClient"),
         'Content-Type': 'application/json',
       },
       data: data,

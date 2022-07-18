@@ -153,7 +153,7 @@ export class ProductRegisterComponent implements OnInit {
       method: 'get',
       url: 'http://localhost:5236/owner/get',
       headers: { 
-        'Authorization': 'Bearer ' + localStorage.getItem("authToken"),
+        'Authorization': 'Bearer ' + localStorage.getItem("authTokenOwner"),
         'Content-Type': 'application/json'
       },
       data : data
@@ -305,7 +305,7 @@ export class ProductRegisterComponent implements OnInit {
   }
 
   CheckTokenOwner() {
-    var token = localStorage.getItem("authTokenOwner")
+    var token = localStorage.getItem("authTokenOwnerOwner")
     if (!token) {
       this.router.navigate(["client/login"]);
     }

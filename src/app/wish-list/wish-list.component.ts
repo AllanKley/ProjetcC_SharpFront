@@ -49,7 +49,7 @@ export class WishListComponent implements OnInit {
       method: 'delete',
       url: 'http://localhost:5236/wishlist/deletewishlist/' + idWishlist,
       headers: {
-        'Authorization': 'Bearer ' +  localStorage.getItem("authToken"),
+        'Authorization': 'Bearer ' +  localStorage.getItem("authTokenClient"),
       }
     };
     console.log("teste");

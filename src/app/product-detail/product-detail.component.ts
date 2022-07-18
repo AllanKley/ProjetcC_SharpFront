@@ -35,7 +35,7 @@ export class ProductDetailComponent implements OnInit {
       method: 'get',
       url: 'http://localhost:5236/client/get',
       headers: { 
-        'Authorization': 'Bearer ' + localStorage.getItem("authToken"),
+        'Authorization': 'Bearer ' + localStorage.getItem("authTokenClient"),
         'Content-Type': 'application/json'
       },
       data : data
@@ -117,7 +117,7 @@ export class ProductDetailComponent implements OnInit {
       "store": this.store,
       "productsDTO": this.product,
     });
-    var token = localStorage.getItem("authToken");
+    var token = localStorage.getItem("authTokenClient");
     
     
     console.log(data);
