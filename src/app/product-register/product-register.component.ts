@@ -305,7 +305,7 @@ export class ProductRegisterComponent implements OnInit {
   }
 
   CheckTokenOwner() {
-    var token = localStorage.getItem("authTokenOwnerOwner")
+    var token = localStorage.getItem("authTokenOwner")
     if (!token) {
       this.router.navigate(["client/login"]);
     }
