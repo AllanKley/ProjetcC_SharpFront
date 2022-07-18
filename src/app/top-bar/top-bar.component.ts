@@ -52,38 +52,6 @@ export class TopBarComponent implements OnInit {
       this.logado = false;
       this.client = false;
       this.owner = false;
-<<<<<<< HEAD
-    }else{
-      var data = JSON.stringify({});
-     
-      var config = {
-        method: 'get',
-        url: 'http://localhost:5236/client/test',
-        headers: { 
-          'Authorization': 'Bearer ' + localStorage.getItem("authToken"),
-          'Content-Type': 'application/json'
-        },
-        data : data
-      };
-      
-      let instance = this;
-      axios(config)
-      .then(function (response) {
-        if(response.data){
-          instance.client = true;
-          instance.owner = false;
-          instance.logado = true;
-          
-        }else{
-          instance.client = false;
-          instance.owner = true;
-          instance.logado = true;
-          
-        }
-      })
-      .catch(function (error) {
-      })
-=======
     } else {
       if (localStorage.getItem('authTokenClient')) {
         this.client = true;
@@ -94,7 +62,6 @@ export class TopBarComponent implements OnInit {
         this.owner = true;
         this.logado = true;
       }
->>>>>>> 02bbf8f869b958c5907584c00d4dd4a52a8c8cf9
     }
   }
 }
