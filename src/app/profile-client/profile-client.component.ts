@@ -36,7 +36,7 @@ export class ProfileClientComponent implements OnInit {
       method: 'get',
       url: 'http://localhost:5236/client/get',
       headers: { 
-        'Authorization': 'Bearer ' + localStorage.getItem("authToken"),
+        'Authorization': 'Bearer ' + localStorage.getItem("authTokenClient"),
         'Content-Type': 'application/json'
       },
       data : data
@@ -50,8 +50,8 @@ export class ProfileClientComponent implements OnInit {
   }
 
   CheckTokenClient() {
-    var token = localStorage.getItem("authTokenOwner")
-    if (!token) {
+    var token = localStorage.getItem("authTokenClient")
+    if (token == null) {
       this.router.navigate(["client/login"]);
     }
     // private router: Router

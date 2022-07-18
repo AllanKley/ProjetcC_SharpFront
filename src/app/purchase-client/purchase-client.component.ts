@@ -27,7 +27,7 @@ export class PurchaseClientComponent implements OnInit {
       method: 'get',
       url: 'http://localhost:5236/purchase/get/client',
       headers: {
-        'Authorization': 'Bearer ' + localStorage.getItem("authToken"),
+        'Authorization': 'Bearer ' + localStorage.getItem("authTokenClient"),
         'Content-Type': 'application/json'
       }
     };
@@ -46,7 +46,7 @@ export class PurchaseClientComponent implements OnInit {
 
 
   CheckTokenClient() {
-    var token = localStorage.getItem("authTokenOwner")
+    var token = localStorage.getItem("authTokenClient")
     if (!token) {
       this.router.navigate(["client/login"]);
     }

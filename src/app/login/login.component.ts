@@ -14,7 +14,9 @@ export class LoginComponent implements OnInit {
 
   constructor(private router: Router) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    localStorage.clear();
+   }
 
   login() {
     let user = document.getElementById("username") as HTMLInputElement;

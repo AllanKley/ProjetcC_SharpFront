@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import axios from 'axios';
 import { Product } from '../products';
 
@@ -10,8 +11,9 @@ import { Product } from '../products';
 export class WishListComponent implements OnInit {
 
   products : [Product] |undefined;
-
+  constructor(private router: Router) {}
   ngOnInit(): void {
+    this.CheckTokenClient();
     this.LoadProducts();
   }
 
@@ -23,7 +25,7 @@ export class WishListComponent implements OnInit {
       method: 'get',
       url: 'http://localhost:5236/wishlist/getwishlist',
       headers: {
-        'Authorization': 'Bearer ' + localStorage.getItem("authToken"),
+        'Authorization': 'Bearer ' + localStorage.getItem("authTokenClient"),
         'Content-Type': 'application/json'
       },
       data : data
@@ -40,12 +42,6 @@ export class WishListComponent implements OnInit {
       console.log(error);
     });
   }
-
-
-
-
-
-
 
   RemoveWishList(idWishlist:number){
 
@@ -69,6 +65,11 @@ export class WishListComponent implements OnInit {
 
   }
 
-
-
+  CheckTokenClient() {
+    var token = localStorage.getItem("authTokenClient")
+    if (!token) {
+      this.router.navigate(["client/login"]);
+    }
+    // private router: Router
+  }
 }

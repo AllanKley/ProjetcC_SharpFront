@@ -24,10 +24,11 @@ export class TopBarComponent implements OnInit {
   }
 
   profile() {
-    if (localStorage.getItem('authTokenOwner') && localStorage.getItem('authTokenClient') == null) {
+    if (localStorage.getItem('authTokenOwner') || localStorage.getItem('authTokenClient') != null) {
       if (localStorage.getItem('authTokenClient')) {
         this.router.navigate(['client/profile']);
       } else {
+        
         this.router.navigate(['owner/profile']);
       }
     }
@@ -46,7 +47,6 @@ export class TopBarComponent implements OnInit {
 
 
   checkUser() {
-    console.log(localStorage.getItem('authTokenClient') && localStorage.getItem('authTokenOwner') == null)
     if (localStorage.getItem('authTokenClient') && localStorage.getItem('authTokenOwner') != null) {
       console.log("não logado");
       this.logado = false;
@@ -63,12 +63,7 @@ export class TopBarComponent implements OnInit {
         this.logado = true;
       }
     }
-
-
-
   }
-
-
 }
 
 
