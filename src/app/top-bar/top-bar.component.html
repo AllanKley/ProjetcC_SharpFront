@@ -15,12 +15,12 @@
 
                     <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="navbarDarkDropdownMenuLink">
                         <li *ngIf="logado"><a class="dropdown-item" (click)="profile()">Perfil</a></li>
-                        <li *ngIf="client"><a class="dropdown-item" [routerLink]="['client/purchase']">Purchases</a></li>
-                        <li *ngIf="client"><a class="dropdown-item" [routerLink]="['wishlist']">WishList</a></li>
-                        <li *ngIf="owner"><a class="dropdown-item" [routerLink]="['owner/sales']">Sales</a></li>
+                        <li *ngIf="client"><a class="dropdown-item" href='client/purchase'>Purchases</a></li>
+                        <li *ngIf="client"><a class="dropdown-item" href='/wishlist'>WishList</a></li>
+                        <li *ngIf="owner"><a class="dropdown-item" href="owner/sales">Sales</a></li>
                         <li *ngIf="owner"><a class="dropdown-item" href="register/product">Register Product</a></li>
                         <li *ngIf="logado"><a class="dropdown-item" (click)="sair()">Logout</a></li>
-                        <li *ngIf="logado == false"><a class="dropdown-item" [routerLink]="['client/login']">Login</a></li>
+                        <li *ngIf="logado == false"><a class="dropdown-item" href='client/login'>Login</a></li>
                     </ul>
                 </li>
             </ul>

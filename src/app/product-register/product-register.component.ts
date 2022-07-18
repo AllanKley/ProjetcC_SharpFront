@@ -32,11 +32,8 @@ export class ProductRegisterComponent implements OnInit {
   stores: Array<Store> | undefined;
 
   ngOnInit(): void {
-<<<<<<< HEAD
     this.CheckTokenOwner();
-=======
     this.getStores();
->>>>>>> 4f16bd2fb0ef8ff0936824c0a698723d94682efe
   }
 
   RegisterProduct(){
@@ -152,8 +149,6 @@ export class ProductRegisterComponent implements OnInit {
   Cancel(){
     window.location.reload();
   }
-<<<<<<< HEAD
-
   activeVisibleSpan(id: string) {
     var span = document.querySelector(id);
     span?.classList.remove('invisible');
@@ -260,7 +255,4 @@ export class ProductRegisterComponent implements OnInit {
       this.router.navigate(["client/login"]);
     }
   }
-
-=======
->>>>>>> 4f16bd2fb0ef8ff0936824c0a698723d94682efe
 }
