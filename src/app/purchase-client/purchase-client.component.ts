@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import axios from 'axios';
 import { elementAt } from 'rxjs';
 import { Product } from '../products';
@@ -12,7 +13,10 @@ export class PurchaseClientComponent implements OnInit {
 
   purchases : [any] |undefined;
 
+  constructor(private router: Router) {}
+
   ngOnInit(): void {
+    this.CheckTokenClient();
     this.LoadProducts();
   }
 
@@ -41,7 +45,13 @@ export class PurchaseClientComponent implements OnInit {
   }
 
 
-
+  CheckTokenClient() {
+    var token = localStorage.getItem("authTokenOwner")
+    if (!token) {
+      this.router.navigate(["client/login"]);
+    }
+    // private router: Router
+  }
 
 
 

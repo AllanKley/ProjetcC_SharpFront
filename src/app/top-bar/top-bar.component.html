@@ -18,7 +18,6 @@
                         <li *ngIf="client"><a class="dropdown-item" [routerLink]="['client/purchase']">Purchases</a></li>
                         <li *ngIf="client"><a class="dropdown-item" [routerLink]="['wishlist']">WishList</a></li>
                         <li *ngIf="owner"><a class="dropdown-item" [routerLink]="['owner/sales']">Sales</a></li>
-                        <li *ngIf="owner"><a class="dropdown-item" (click)="sair()">Register Product</a></li>
                         <li *ngIf="owner"><a class="dropdown-item" href="register/product">Register Product</a></li>
                         <li *ngIf="logado"><a class="dropdown-item" (click)="sair()">Logout</a></li>
                         <li *ngIf="logado == false"><a class="dropdown-item" [routerLink]="['client/login']">Login</a></li>

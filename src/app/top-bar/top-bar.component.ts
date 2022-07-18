@@ -15,28 +15,29 @@ export class TopBarComponent implements OnInit {
   client: boolean = false;
   owner: boolean = false;
   logado: boolean = false;
-  constructor(private router: Router) { 
- 
+  constructor(private router: Router) {
+
   }
 
   ngOnInit(): void {
     this.checkUser();
   }
 
-  profile(){
-    if(localStorage.getItem('authToken') != null)
-      if(this.client){
+  profile() {
+    if (localStorage.getItem('authTokenOwner') && localStorage.getItem('authTokenClient') == null) {
+      if (localStorage.getItem('authTokenClient')) {
         this.router.navigate(['client/profile']);
-      }else{
+      } else {
         this.router.navigate(['owner/profile']);
       }
+    }
     else
-      this.router.navigate(['client/login'])  
+      this.router.navigate(['client/login'])
   }
 
 
-  
-  sair(){
+
+  sair() {
     var instance = this;
     localStorage.clear();
     instance.router.navigate(['client/login']);
@@ -44,47 +45,27 @@ export class TopBarComponent implements OnInit {
 
 
 
-  checkUser(){
-    
-    if(localStorage.getItem('authToken') == null){
+  checkUser() {
+    console.log(localStorage.getItem('authTokenClient') && localStorage.getItem('authTokenOwner') == null)
+    if (localStorage.getItem('authTokenClient') && localStorage.getItem('authTokenOwner') != null) {
       console.log("não logado");
       this.logado = false;
       this.client = false;
       this.owner = false;
-    }else{
-      var data = JSON.stringify({});
-      console.log(data)
-      var config = {
-        method: 'get',
-        url: 'http://localhost:5236/client/test',
-        headers: { 
-          'Authorization': 'Bearer ' + localStorage.getItem("authToken"),
-          'Content-Type': 'application/json'
-        },
-        data : data
-      };
-      
-      let instance = this;
-      axios(config)
-      .then(function (response) {
-        if(response.data){
-          instance.client = true;
-          instance.owner = false;
-          instance.logado = true;
-          
-        }else{
-          instance.client = false;
-          instance.owner = true;
-          instance.logado = true;
-          
-        }
-      })
-      .catch(function (error) {
-      })
+    } else {
+      if (localStorage.getItem('authTokenClient')) {
+        this.client = true;
+        this.owner = false;
+        this.logado = true;
+      } else {
+        this.client = false;
+        this.owner = true;
+        this.logado = true;
+      }
     }
 
-    
-    
+
+
   }
 
 

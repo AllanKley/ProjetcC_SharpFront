@@ -1,3 +1,5 @@
+<app-top-bar></app-top-bar>
+
 <div class="container">
     <table *ngIf="Sales">
         <thead>
@@ -11,7 +13,7 @@
             <tr *ngFor="let sale of Sales">
                 <td>{{sale.productName}}</td>
                 <td>{{sale.dataOfPurchase}}</td>
-                <td>{{sale.purchaseAmount}}</td>
+                <td>R{{sale.purchaseAmount | currency}}</td>
                 <td>{{sale.clientName}}</td>
                 <td data-bs-toggle="modal" data-bs-target="#DetailsSales" (click)="LoadDetails(sale.id)"><img  class="eye" src="https://www.svgrepo.com/show/12044/eye.svg" alt=""></td>
             </tr>
@@ -30,6 +32,7 @@
                 <p>Product: {{SalesDetails.product.name}}</p>
               <div>
                   <img src={{SalesDetails.product.image}} alt="">
+                  <p>Purchase value: R{{SalesDetails.purchase_value |currency}}</p>
                   <p>Date of purchase: {{SalesDetails.date_purchase | date:'dd/MM/yyyy'}}</p>
                   <p>Payment type: {{SalesDetails.payment_type}}</p>
                   <p>Nf Number: {{SalesDetails.number_nf}}</p>

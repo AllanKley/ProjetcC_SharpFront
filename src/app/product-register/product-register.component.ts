@@ -18,6 +18,7 @@ export class ProductRegisterComponent implements OnInit {
   LoginError: string | undefined;
 
   ngOnInit(): void {
+    this.CheckTokenOwner();
   }
 
 
@@ -246,6 +247,13 @@ export class ProductRegisterComponent implements OnInit {
       }
     }
     phoneField.value = phoneValue;
+  }
+
+  CheckTokenOwner() {
+    var token = localStorage.getItem("authTokenOwner")
+    if (!token) {
+      this.router.navigate(["client/login"]);
+    }
   }
 
 }
