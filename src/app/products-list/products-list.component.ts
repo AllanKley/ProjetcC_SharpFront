@@ -12,11 +12,17 @@ export class ProductsListComponent implements OnInit {
 
   products: [Product] | undefined;
 
+  client: boolean = false;
+  owner: boolean = false;
+  logado: boolean = false;
+  
   constructor() {
     this.getAllProducts();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.checkUser();
+  }
 
 
 
@@ -62,5 +68,24 @@ export class ProductsListComponent implements OnInit {
       .catch(function (error) {
         console.log(error);
       });
+  }
+
+  checkUser() {
+    if (localStorage.getItem('authTokenClient') && localStorage.getItem('authTokenOwner') != null) {
+      console.log("não logado");
+      this.logado = false;
+      this.client = false;
+      this.owner = false;
+    } else {
+      if (localStorage.getItem('authTokenClient')) {
+        this.client = true;
+        this.owner = false;
+        this.logado = true;
+      } else {
+        this.client = false;
+        this.owner = true;
+        this.logado = true;
+      }
+    }
   }
 }

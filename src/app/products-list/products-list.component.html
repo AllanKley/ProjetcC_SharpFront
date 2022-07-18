@@ -17,7 +17,7 @@
     
         <div class="price">
             <h1>{{product.unit_price | currency}}</h1>
-            <img src="../../assets/Icons/heart.svg" alt="" (click)="AddProductToWishList(product.idStocks)">
+            <img src="../../assets/Icons/heart.svg" alt="" (click)="AddProductToWishList(product.idStocks)" *ngIf="client">
         </div>
     </div>
   

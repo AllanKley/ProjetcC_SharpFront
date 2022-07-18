@@ -47,6 +47,8 @@ export class ProductRegisterComponent implements OnInit {
   ngOnInit(): void {
     this.CheckTokenOwner();
     this.getStores();
+
+    
   }
 
   async RegisterProduct(){
