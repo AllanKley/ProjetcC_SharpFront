@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, NgModel } from '@angular/forms';
+import { Client } from '../client';
 import { Router } from '@angular/router';
-//import { Client } from '../client';
 import axios from 'axios';
 
 @Component({
