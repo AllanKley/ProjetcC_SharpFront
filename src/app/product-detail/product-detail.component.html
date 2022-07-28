@@ -15,7 +15,7 @@
                 
                 <h4 class="description">{{ product.description}}</h4>
                 
-                <button class="button-5 purchase" (click)="makePurchase()">Comprar</button>
+                <button class="button-5 purchase" *ngIf="!owner" (click)="makePurchase()">Comprar</button>
             </div>
             <div class="container-image">
                 <div class="image">

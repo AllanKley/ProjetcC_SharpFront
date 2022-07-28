@@ -15,7 +15,7 @@ export class ProductDetailComponent implements OnInit {
   product: Product | undefined;
   client: Client | undefined;
   store:{};
-
+  owner:boolean = false
   constructor(private route: ActivatedRoute) {
     this.store = {}
 
@@ -25,7 +25,8 @@ export class ProductDetailComponent implements OnInit {
     const routeParams = this.route.snapshot.paramMap;
     const productIdFromRoute = Number(routeParams.get('productID'));
     this.getProduct(productIdFromRoute);
-    this.getClient();
+    
+    this.checkUser();
   }
 
   async getClient(){
@@ -158,5 +159,22 @@ export class ProductDetailComponent implements OnInit {
       .catch(function (error: any) {
         console.log(error);
       });
+  }
+
+
+
+  checkUser() {
+    console.log(localStorage.getItem('authTokenOwner'));
+    
+    if (localStorage.getItem('authTokenOwner') == null) {
+      console.log("uhawoufhoa");
+      
+      this.owner = false;
+      this.getClient();
+    } else {
+      console.log("adw");
+      
+      this.owner = true;
+    }
   }
 }

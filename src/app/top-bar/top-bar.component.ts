@@ -64,7 +64,6 @@ export class TopBarComponent implements OnInit {
         this.logado = true;
       }
     }
-    
   }
 }
 
