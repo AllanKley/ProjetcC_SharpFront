@@ -47,8 +47,9 @@ export class TopBarComponent implements OnInit {
 
 
   checkUser() {
-    if (localStorage.getItem('authTokenClient') && localStorage.getItem('authTokenOwner') != null) {
-      console.log("não logado");
+    
+    if ((localStorage.getItem('authTokenClient') == null) && (localStorage.getItem('authTokenOwner') == null)) {
+
       this.logado = false;
       this.client = false;
       this.owner = false;
@@ -63,6 +64,7 @@ export class TopBarComponent implements OnInit {
         this.logado = true;
       }
     }
+    
   }
 }
 

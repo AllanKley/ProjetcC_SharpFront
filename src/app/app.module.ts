@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 
@@ -27,13 +27,15 @@ import { ProductRegisterComponent } from './product-register/product-register.co
     ProductsListComponent,
     ProductDetailComponent,
     ClientRegisterComponent,
+    OwnerRegisterComponent,
     LoginComponent,
     WishListComponent,
     ProfileClientComponent,
     PurchaseClientComponent,
     OwnerSalesComponent,
     ProfileOwnerComponent,
-    ProductRegisterComponent
+    ProductRegisterComponent,
+ 
 
   ],
   imports: [
@@ -57,6 +59,7 @@ import { ProductRegisterComponent } from './product-register/product-register.co
     ])
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule { }

@@ -1,9 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, NgModel } from '@angular/forms';
-//import { Client } from '../client';
 import { Client } from '../client';
-import axios from 'axios';
 import { Router } from '@angular/router';
+import axios from 'axios';
 
 @Component({
   selector: 'app-client-register',
