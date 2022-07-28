@@ -39,12 +39,15 @@ export class OwnerSalesComponent implements OnInit {
   LoadData() {
     var config = {
       method: 'get',
-      url: 'http://localhost:5236/purchase/get/store/sales/719',
-      headers: {}
+      url: 'http://localhost:5236/purchase/get/store/sales',
+      headers: {
+        'Authorization': "Bearer "+localStorage.getItem('authTokenOwner')
+      }
     };
     var instance = this;
     axios(config)
       .then(function (response) {
+        console.log(response.data)
         instance.Sales = response.data;
       })
       .catch(function (error) {
