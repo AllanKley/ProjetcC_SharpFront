@@ -108,11 +108,14 @@ export class OwnerRegisterComponent implements OnInit {
           if (errors.login) {
             instance.LoginError = errors.login;
           }
+          alert(errors)
+
         });
     }
   }
 
   RegisterStore(IdOwner:number){
+    
     let nome = this.getInputField("#razao");
     let cnpj = this.getInputField("#cnpj")
     var data = JSON.stringify({
@@ -131,18 +134,21 @@ export class OwnerRegisterComponent implements OnInit {
       },
       data : data
     };
-    
+    var instance =  this;
     axios(config)
     .then(function (response) {
       console.log("Aqui tbm")
       console.log(JSON.stringify(response.data));
+      alert("Your register was successful");
+      instance.router.navigate(["client/login"])
     })
     .catch(function (error) {
+      alert(error.response.data.message);
       console.log(error);
     });
   }
   Cancel(){
-    this.router.navigate(["owner/login"])
+    this.router.navigate(["client/login"])
   }
 
   activeVisibleSpan(id: string) {

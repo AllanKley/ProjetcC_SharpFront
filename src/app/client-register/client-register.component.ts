@@ -96,6 +96,8 @@ export class ClientRegisterComponent implements OnInit {
       };
       axios(config)
         .then(function (response) {
+          alert("Your register was successful");
+          instance.router.navigate(["client/login"])
 
         })
         .catch(function (error) {

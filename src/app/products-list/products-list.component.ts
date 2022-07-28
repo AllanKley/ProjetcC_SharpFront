@@ -39,12 +39,10 @@ export class ProductsListComponent implements OnInit {
       .then(function (response: any) {
         instance.products = response.data;
       })
-      .catch(function (error: any) {});
+      .catch(function (error: any) {
+        console.log(error);
+      });
   }
-
-
-
-
 
   AddProductToWishList(idStocks: number) {
     var data = JSON.stringify({
